@@ -1,0 +1,147 @@
+/* Walker — Curved Warm (Subtle Animations)
+   Path: ~/.config/walker/themes/curved-warm-subtle/style.css
+   Very small, tasteful motion for hover, focus, selected and entrance.
+*/
+
+/* your palette */
+@define-color selected-text #da7d45;
+@define-color text #ffbe6f;
+@define-color base #160e0e;
+@define-color border #b38989;
+@define-color foreground #ffbe6f;
+@define-color background #160e0e;
+
+
+/* aliases expected by the rest of the stylesheet */
+@define-color theme_fg_color #ffbe6f;   /* alias of foreground/text */
+@define-color window_bg_color #160e0e;  /* alias of background/base */
+@define-color accent_bg_color #da7d45;  /* alias of selected-text */
+@define-color error_bg_color #6b1b1b;
+@define-color error_fg_color #fff5f5;
+
+/* Window wrapper */
+.box-wrapper {
+  box-shadow:
+    0 19px 38px rgba(0, 0, 0, 0.3),
+    0 15px 12px rgba(0, 0, 0, 0.22);
+  background: @window_bg_color;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid darker(@accent_bg_color);
+}
+
+/* Input field */
+.input {
+  caret-color: @theme_fg_color;
+  background: lighter(@window_bg_color);
+  padding: 6px;
+  color: @theme_fg_color;
+  border-radius: 8px;
+}
+
+.input placeholder {
+  opacity: 0;
+}
+
+/* List items */
+.list {
+  color: @theme_fg_color;
+}
+
+.item-box {
+  border-radius: 10px;
+  padding: 2px;
+}
+
+child:hover .item-box,
+child:selected .item-box {
+  background: alpha(@accent_bg_color, 0.25);
+ 
+}
+
+.item-text {
+  font-size: 14px;
+}
+
+.item-subtext {
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.item-image,
+.item-image-text {
+  margin-right: 10px;
+}
+
+/* Quick activation labels */
+.item-quick-activation {
+  margin-left: 10px;
+  background: alpha(@accent_bg_color, 0.25);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Placeholders */
+.placeholder,
+.elephant-hint {
+  color: @theme_fg_color;
+  opacity: 0.5;
+}
+
+/* Keybinds display */
+.keybinds-wrapper {
+  border-top: 1px solid lighter(@window_bg_color);
+  font-size: 12px;
+  opacity: 0.5;
+  color: @theme_fg_color;
+}
+
+.keybind-bind {
+  font-weight: bold;
+  text-transform: lowercase;
+}
+
+/* Error display */
+.error {
+  padding: 10px;
+  background: @error_bg_color;
+  color: @error_fg_color;
+  border-radius: 5px;
+}
+
+/* Preview pane */
+.preview {
+  border: 1px solid alpha(@accent_bg_color, 0.25);
+  padding: 10px;
+  border-radius: 10px;
+  color: @theme_fg_color;
+}
+
+/* Icon sizes */
+.normal-icons {
+  -gtk-icon-size: 16px;
+}
+
+.large-icons {
+  -gtk-icon-size: 32px;
+}
+
+/* Hide scrollbar */
+scrollbar {
+  opacity: 0;
+}
+/* tiny active click feedback (quick, low-cost) */
+.list-row:active,
+.item:active {
+  transform: translateY(-1px);
+  background-image: radial-gradient(circle at center, rgba(255,190,111,0.12) 0%, transparent 40%);
+  background-repeat: no-repeat;
+  transition: background 220ms var(--easing);
+}
+
+/* small screen adjustments */
+@media (max-width: 720px) {
+  .box-wrapper { padding: 10px; border-radius: 10px; }
+  .list-row .icon, .item .icon { min-width: 36px; min-height: 36px; border-radius: 8px; }
+  .list-row .title, .item .title { font-size: 13px; }
+}
